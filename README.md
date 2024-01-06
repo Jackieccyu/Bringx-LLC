@@ -15,31 +15,31 @@ Before you begin, ensure you have met the following requirements:
 To install Bringx LLC Project, follow these steps:
 
 1. Clone the repository:
-```bash
+
 git clone https://github.com/Jackieccyu/Bringx-LLC.git
 Navigate to the project directory:
-bash
-Copy code
+
+
 cd Bringx-LLC
 Install the necessary npm packages:
-bash
-Copy code
+
+
 npm install
 Using Bringx LLC Project
 To use Bringx LLC Project, follow these steps:
 
 Start the server:
-bash
-Copy code
+
+
 npm start
 or if you're using nodemon for development:
 
-bash
-Copy code
+
 nodemon start
 Open your browser and navigate to:
 arduino
-Copy code
+
+
 http://localhost:3000
 Begin typing a US state into the Typeahead box to see suggestions.
 Contributing to Bringx LLC Project
