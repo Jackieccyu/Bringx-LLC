@@ -18,9 +18,10 @@ Clone the repository:
 ```bash
 git clone https://github.com/Jackieccyu/Bringx-LLC.git
 ```
-Navigate to the project directory:
+Navigate to the backend project directory:
 ```bash
 cd Bringx-LLC
+cd Backend
 ```
 Install the necessary npm packages:
 ```bash
@@ -32,7 +33,7 @@ To use the Bringx LLC Project, follow these steps:
 
 Start the server:
 ```bash
-npm start
+npm app.js
 ```
 or if you're using nodemon for development:
 
