@@ -1,6 +1,7 @@
 # BringX Exercise1 
 
 This is the repository for the Bringx LLC project, which includes a simple Typeahead feature to search for US states.
+## This repo is contain Frontend and Backend file. we need start Backend Server on local first and then test on Froend page.
 
 ## Prerequisites
 
