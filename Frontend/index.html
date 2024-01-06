@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Typeahead</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+    
+        #stateInput {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    
+        #stateDropdown {
+            width: 300px;
+            border: 1px solid #ccc;
+            border-top: none; /* Hide the top border to blend with the input */
+            position: absolute; /* Position it below the input field */
+            background-color: white;
+            z-index: 999; /* Ensure it's on top of other elements */
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Add some shadow */
+        }
+    
+        .dropdown-menu {
+            max-height: 200px;
+            overflow-y: auto; /* Add scrollbar if too many items */
+        }
+    
+        .dropdown-menu div {
+            padding: 10px;
+            cursor: pointer;
+        }
+    
+        .dropdown-menu div:hover, .dropdown-menu div.selected {
+            background-color: #f1f1f1; /* Change background on hover and for selected */
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="stateInput" autocomplete="off" placeholder="Type to search states...">
+    <div id="stateDropdown" class="dropdown-menu"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var currentFocus = -1;
+
+            $('#stateInput').on('input', function() {
+                var query = $(this).val();
+                currentFocus = -1; // Reset the current focus
+                $.ajax({
+                    url: 'http://localhost:3000/states?q=' + query,
+                    success: function(data) {
+                        $('#stateDropdown').empty();
+                        data.forEach(function(state) {
+                            var item = $('<div></div>');
+                            item.text(state.name);
+                            item.on('click', function() {
+                                $('#stateInput').val(state.name);
+                                $('#stateDropdown').empty().hide();
+                            });
+                            $('#stateDropdown').append(item);
+                        });
+                        $('#stateDropdown').show();
+                    }
+                });
+            });
+
+            $('#stateInput').on('keydown', function(e) {
+                var x = $('#stateDropdown div');
+                if (e.keyCode === 40) { // Down arrow
+                    currentFocus++;
+                    addActive(x);
+                } else if (e.keyCode === 38) { // Up arrow
+                    currentFocus--;
+                    addActive(x);
+                } else if (e.keyCode === 13) { // Enter
+                    e.preventDefault();
+                    if (currentFocus > -1) {
+                        x.eq(currentFocus).click(); // Simulate a click on the "active" item
+                    }
+                }
+            });
+
+            function addActive(x) {
+                if (!x.length) return false;
+                removeActive(x);
+                if (currentFocus >= x.length) currentFocus = 0;
+                if (currentFocus < 0) currentFocus = x.length - 1;
+                x.eq(currentFocus).addClass("selected");
+                x.eq(currentFocus).get(0).scrollIntoView({
+                    behavior: "smooth", 
+                    block: "nearest", 
+                    inline: "nearest"
+                });
+            }
+
+            function removeActive(x) {
+                x.removeClass("selected");
+            }
+
+            $(document).on('click', function(e) {
+                if (!$(e.target).closest('#stateDropdown').length && !$(e.target).is('#stateInput')) {
+                    $('#stateDropdown').empty().hide();
+                    currentFocus = -1; // Reset the current focus
+                }
+            });
+        });
+    </script>
+</body>
+</html>
