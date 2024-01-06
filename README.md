@@ -33,7 +33,7 @@ To use the Bringx LLC Project, follow these steps:
 
 Start the server:
 ```bash
-npm app.js
+node app.js
 ```
 or if you're using nodemon for development:
 
