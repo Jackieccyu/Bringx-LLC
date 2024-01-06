@@ -15,15 +15,13 @@ Before you begin, ensure you have met the following requirements:
 To install the Bringx LLC Project, follow these steps:
 
 Clone the repository:
-```bash
 git clone https://github.com/Jackieccyu/Bringx-LLC.git
 
 Navigate to the project directory:
-```bash
+
 cd Bringx-LLC
 
 Install the necessary npm packages:
-```bash
 npm install
 
 
@@ -32,16 +30,15 @@ To use the Bringx LLC Project, follow these steps:
 
 Start the server:
 
-```bash
 npm start
 
 or if you're using nodemon for development:
 
-```bash
-nodemon start
+
+
 Open your browser and navigate to:
 
-```bash
+
 http://localhost:3000
 Begin typing a US state into the Typeahead box to see suggestions.
 
@@ -57,7 +54,7 @@ Create the pull request.
 Alternatively, see the GitHub documentation on creating a pull request.
 
 Contact
-If you want to contact me, you can reach me at your_email@example.com.
+If you want to contact me, you can reach me at cian79421@hotmail.com
 
 License
 This project uses the following license: MIT.
