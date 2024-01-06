@@ -1,4 +1,4 @@
-# Bringx LLC Project
+# BringX Exercise1 
 
 This is the repository for the Bringx LLC project, which includes a simple Typeahead feature to search for US states.
 
